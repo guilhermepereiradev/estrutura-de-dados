@@ -10,6 +10,10 @@ public abstract class List<T extends Comparable<T>> {
         size = 0;
     }
 
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
     public Integer size() {
         return this.size;
     }
@@ -37,17 +41,20 @@ public abstract class List<T extends Comparable<T>> {
         size--;
     }
 
-    public T get(Integer index) {
+    public T get(Integer index) throws RuntimeException {
         Node<T> target = head;
 
         for (int i = 0; i < index; i++) {
+            if (target.getNext() == null) {
+                throw new RuntimeException("Elemento nâo encontrado");
+            }
             target = target.getNext();
         }
 
         return target.getValue();
     }
 
-    public void remove(T obj) {
+    public void remove(T obj) throws RuntimeException {
         if (head == null) return;
 
         if (head.getValue().equals(obj)) {
@@ -56,12 +63,18 @@ public abstract class List<T extends Comparable<T>> {
             return;
         }
 
+
         for (Node<T> node = head; node != null; node = node.getNext()) {
+            if(node.getNext() == null) {
+                throw new RuntimeException("Elemento nâo encontrado");
+            }
+
             if (node.getNext().getValue().equals(obj)) {
                 node.setNext(node.getNext().getNext());
                 break;
             }
         }
+
         size--;
     }
 
