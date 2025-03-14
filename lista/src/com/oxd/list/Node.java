@@ -10,6 +10,8 @@ public class Node<T extends Comparable<T>> implements Comparable<Node<T>> {
         this.next = null;
     }
 
+    public Node() {}
+
     public void setValue(T value) {
         this.value = value;
     }

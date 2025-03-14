@@ -1,17 +1,35 @@
 import com.oxd.list.OrderedList;
+import com.oxd.list.Stack;
 
 public class Main {
     public static void main(String[] args) {
+        Stack<Integer> stack = new Stack<>();
 
-        OrderedList<Integer> orderedList = new OrderedList<>();
-        orderedList.add(301);
-        orderedList.add(77);
-        orderedList.add(2);
-        orderedList.add(107);
-        orderedList.add(252);
-        orderedList.add(444);
+        stack.stack(1);
+        stack.stack(2);
+        stack.stack(3);
+        stack.stack(4);
 
-        System.out.println(orderedList);
+        System.out.println("Stack: "+stack);
+        System.out.println("Is empty: "+stack.isEmpty());
+        System.out.println("Size: "+stack.size());
+
+        System.out.println("Desempilha o: " + stack.unstack());
+        System.out.println("Stack: "+stack);
+
+        System.out.println("Esvazia a pilha: ");
+        stack.deflate();
+        System.out.println("Stack: "+stack);
+
+//        OrderedList<Integer> orderedList = new OrderedList<>();
+//        orderedList.add(301);
+//        orderedList.add(77);
+//        orderedList.add(2);
+//        orderedList.add(107);
+//        orderedList.add(252);
+//        orderedList.add(444);
+//
+//        System.out.println(orderedList);
 
 //        LinkedList<Integer> list = new LinkedList<>();
 //        System.out.println("Is empty -> "+list.isEmpty());
