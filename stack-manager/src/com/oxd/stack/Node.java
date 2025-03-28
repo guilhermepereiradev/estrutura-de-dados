@@ -1,4 +1,4 @@
-package com.oxd.list;
+package com.oxd.stack;
 
 public class Node<T extends Comparable<T>> implements Comparable<Node<T>> {
 
@@ -9,6 +9,8 @@ public class Node<T extends Comparable<T>> implements Comparable<Node<T>> {
         this.value = value;
         this.next = null;
     }
+
+    public Node() {}
 
     public void setValue(T value) {
         this.value = value;
