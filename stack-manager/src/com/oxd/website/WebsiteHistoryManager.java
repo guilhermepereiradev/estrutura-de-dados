@@ -6,22 +6,28 @@ import java.util.Random;
 
 public class WebsiteHistoryManager {
 
-    private Stack<Website> history = new Stack<>();
+    private Stack<Website> backStack = new Stack<>();
+    private Stack<Website> nextStack = new Stack<>();
     private Website currentWebsite = null;
     private Random random = new Random();
 
     public void generateWebsite(String url) {
         Website website = new Website(random.nextLong(), url);
-        getHistory().stack(website);
+        if(getCurrentWebsite() != null) {
+            getBackStack().stack(getCurrentWebsite());
+        }
+        getNextStack().deflate();
         setCurrentWebsite(website);
     }
 
     public void goToPreviousWebsite() {
-        setCurrentWebsite(getHistory().getPrevious(getCurrentWebsite()));
+        getNextStack().stack(getCurrentWebsite());
+        setCurrentWebsite(getBackStack().unstack());
     }
 
     public void goToNextWebsite() {
-        setCurrentWebsite(getHistory().getNext(getCurrentWebsite()));
+        getBackStack().stack(getCurrentWebsite());
+        setCurrentWebsite(getNextStack().unstack());
     }
 
     public void printMenu() {
@@ -38,10 +44,10 @@ public class WebsiteHistoryManager {
                 .append("+            1 - Digitar novo site                               *\n");
 
         if (getCurrentWebsite() != null) {
-            if (!getHistory().isBase(getCurrentWebsite())) {
+            if (!getBackStack().isEmpty() && !getBackStack().isBase(getCurrentWebsite())) {
                 menu.append("+            2 - Ir para anterior                                *\n");
             }
-            if (!getHistory().isTop(getCurrentWebsite())) {
+            if (!getNextStack().isEmpty() && !getNextStack().isTop(getCurrentWebsite())) {
                 menu.append("+            3 - Ir para o próximo                               *\n");
             }
         }
@@ -52,12 +58,28 @@ public class WebsiteHistoryManager {
         System.out.println(menu);
     }
 
-    public Stack<Website> getHistory() {
-        return history;
+    public Random getRandom() {
+        return random;
     }
 
-    public void setHistory(Stack<Website> history) {
-        this.history = history;
+    public void setRandom(Random random) {
+        this.random = random;
+    }
+
+    public Stack<Website> getNextStack() {
+        return nextStack;
+    }
+
+    public void setNextStack(Stack<Website> nextStack) {
+        this.nextStack = nextStack;
+    }
+
+    public Stack<Website> getBackStack() {
+        return backStack;
+    }
+
+    public void setBackStack(Stack<Website> backStack) {
+        this.backStack = backStack;
     }
 
     public Website getCurrentWebsite() {
