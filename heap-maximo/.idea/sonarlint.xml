@@ -3,7 +3,7 @@
   <component name="SonarLintProjectSettings">
     <option name="moduleMapping">
       <map>
-        <entry key="passeio-do-cavalo" value="lista" />
+        <entry key="heap-maximo" value="lista" />
       </map>
     </option>
   </component>

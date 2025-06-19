@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/passeio-do-cavalo.iml" filepath="$PROJECT_DIR$/passeio-do-cavalo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/heap-maximo.iml" filepath="$PROJECT_DIR$/heap-maximo.iml" />
     </modules>
   </component>
 </project>
